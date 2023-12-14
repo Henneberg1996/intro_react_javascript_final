@@ -1,7 +1,4 @@
-function MovieList ({ title, rating, genre, movies, setTitle, setGenre, setRating }) {
-  // Logger filmlisten til konsollen
-  console.log("movies")
-  console.log(movies)
+function MovieList ({ title, rating, genre, movies, setTitle, setGenre, setRating, movieKeys }) {
 
   // Funktion til at opdatere en film i databasen
   const updateMovies = async (idx) => {
@@ -15,7 +12,7 @@ function MovieList ({ title, rating, genre, movies, setTitle, setGenre, setRatin
     // Sender en PATCH-anmodning til databasen med den nye film
     //Mit anvendte URL: https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}.json
     //INDSÆT DIT EGET URL HER
-    const response = await fetch(``,
+    const response = await fetch(`https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}.json`,
       {
         method: 'PATCH',
         body: JSON.stringify(newMovie)
@@ -38,7 +35,7 @@ function MovieList ({ title, rating, genre, movies, setTitle, setGenre, setRatin
     //Sender en DELETE-anmodning til databasen for at slette filmen
     //Mit anvendte URL: https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}.json
     //INDSÆT DIT EGET URL HER
-    const response = await fetch(``,
+    const response = await fetch(`https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}/.json`,
       {
         method: 'DELETE',
       }
@@ -76,7 +73,7 @@ function MovieList ({ title, rating, genre, movies, setTitle, setGenre, setRatin
                 <input onChange={(e) => setGenre(e.target.value)} placeholder={movie['genre']} defaultValue={movie['genre']} className="DictItemCenter" />
                 {/* Knapper til at opdatere eller slette filmen */}
                 <button onClick={() => updateMovies(idx)} className="DictItemCenter">Change</button>
-                <button onClick={() => deleteMovie(idx)} className="DictItemCenter">Delete</button>
+                <button onClick={() => deleteMovie( movieKeys[idx])} className="DictItemCenter">Delete</button>
               </div>
             )
           }

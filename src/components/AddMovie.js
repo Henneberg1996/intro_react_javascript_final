@@ -15,7 +15,7 @@ function AddMovie({ titleAdd, ratingAdd, genreAdd, movies, setTitleAdd, setGenre
     // Sender en PUT-anmodning til databasen med den opdaterede liste af film
     //Mit anvendte URL: https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/.json
     //INDSÆT DIT EGET URL HER
-    const response = await fetch(``, {
+    const response = await fetch(`https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/.json`, {
       method: 'PUT',
       body: JSON.stringify(updatedMovies)
     });

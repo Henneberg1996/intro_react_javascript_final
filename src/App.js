@@ -11,6 +11,7 @@ function App () {
   const [rating, setRating] = useState(null)
   const [genre, setGenre] = useState("")
   const [movies, setMovies] = useState([])
+  const [movieKeys, setKeys] = useState([])
   const [titleAdd, setTitleAdd] = useState('')
   const [ratingAdd, setRatingAdd] = useState(null)
   const [genreAdd, setGenreAdd] = useState("")
@@ -20,12 +21,22 @@ function App () {
     const fetchMovies = async () => {
       const response = await fetch("https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies.json")
       const data = await response.json()
-      setMovies(data)
+      if (data){
+        setMovies(Object.values(data))
+        setKeys(Object.keys(data))
+      } else {
+        setMovies([])
+        setKeys([])
+      }
     }
 
     fetchMovies()
 
   }, [movies]) // dependencies-array sikrer, at useEffect kun kører, når movies-state ændres
+
+  console.log("movieKeys")
+  console.log(movieKeys)
+
 
   // Returnerer hovedkomponentens JSX-struktur
   return (
@@ -47,6 +58,7 @@ function App () {
         genre={genre}
         rating={rating}
         movies={movies}
+        movieKeys = {movieKeys}
         setGenre={setGenre}
         setTitle={setTitle}
         setRating={setRating}
