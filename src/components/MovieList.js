@@ -12,7 +12,7 @@ function MovieList ({ title, rating, genre, movies, setTitle, setGenre, setRatin
     // Sender en PATCH-anmodning til databasen med den nye film
     //Mit anvendte URL: https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}.json
     //INDSÆT DIT EGET URL HER
-    const response = await fetch(`https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}.json`,
+    const response = await fetch(``,
       {
         method: 'PATCH',
         body: JSON.stringify(newMovie)
@@ -33,9 +33,9 @@ function MovieList ({ title, rating, genre, movies, setTitle, setGenre, setRatin
   // Funktion til at slette en film fra databasen
   const deleteMovie = async (idx) => {
     //Sender en DELETE-anmodning til databasen for at slette filmen
-    //Mit anvendte URL: https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}.json
+    //Mit anvendte URL: https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}/.json
     //INDSÆT DIT EGET URL HER
-    const response = await fetch(`https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies/${idx}/.json`,
+    const response = await fetch(``,
       {
         method: 'DELETE',
       }

@@ -19,7 +19,9 @@ function App () {
   // useEffect-hook til at hente filmlisten fra databasen, når movies-state ændres
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await fetch("https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies.json")
+    //Mit anvendte URL: https://testdb-7e328-default-rtdb.europe-west1.firebasedatabase.app/movies.json
+    //INDSÆT DIT EGET URL HER
+      const response = await fetch("")
       const data = await response.json()
       if (data){
         setMovies(Object.values(data))
@@ -33,10 +35,6 @@ function App () {
     fetchMovies()
 
   }, [movies]) // dependencies-array sikrer, at useEffect kun kører, når movies-state ændres
-
-  console.log("movieKeys")
-  console.log(movieKeys)
-
 
   // Returnerer hovedkomponentens JSX-struktur
   return (
